@@ -1,7 +1,7 @@
 /** @jsx jsx */
 
 import { Editor } from 'slate'
-import { jsx } from 'slate-hyperscript'
+import { jsx } from './jsx'
 import { describe, it } from 'vitest'
 
 import { BaseEditor } from 'slate'
@@ -19,16 +19,16 @@ declare module 'slate' {
 }
 
 const input = (
-  <editor>
+  <heditor>
     <element>
       o<cursor />
       ne
     </element>
-  </editor>
+  </heditor>
 ) as any as Editor
 
 describe('blockIdPlugin', () => {
   it('apply node id on element insertion', () => {
-    Editor.insertNode(input, { type: 'paragraph', id: '1', children: [] })
+    Editor.insertNode(input, { type: 'paragraph', id: '1', children: [{text: 'This works!'}] })
   })
 })
